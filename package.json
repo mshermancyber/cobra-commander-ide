@@ -1,0 +1,99 @@
+{
+  "name": "cobra-commander-ide",
+  "version": "0.1.0",
+  "description": "Self-hosted multi-model AI coding platform: an orchestrator model plans and delegates, worker models implement, with a CLI, REST/WebSocket API and web shell.",
+  "license": "GPL-3.0-or-later",
+  "author": "Mark Sherman",
+  "homepage": "https://github.com/mshermancyber/cobra-commander-ide#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mshermancyber/cobra-commander-ide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mshermancyber/cobra-commander-ide/issues"
+  },
+  "keywords": [
+    "ai",
+    "coding-agent",
+    "llm",
+    "openai",
+    "orchestrator",
+    "ide",
+    "devtools",
+    "self-hosted",
+    "typescript",
+    "agent"
+  ],
+  "type": "module",
+  "main": "dist/cli.js",
+  "bin": {
+    "cobra-commander": "./dist/cli.js",
+    "cobra": "./dist/cli.js"
+  },
+  "exports": {
+    ".": "./dist/cli.js",
+    "./core/*": "./dist/core/*.js",
+    "./providers/*": "./dist/providers/*.js",
+    "./tools/*": "./dist/tools/*.js"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "files": [
+    "dist",
+    "src",
+    "grammars",
+    "docs",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    ".env.example"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "build:webshell": "npm --prefix gui/webshell run build",
+    "start": "node dist/cli.js",
+    "dev": "tsx src/cli.ts",
+    "daemon": "tsx src/daemon.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "smoke": "tsx src/smoke-test.ts",
+    "seal-key": "tsx src/core/key-vault.ts",
+    "hash-password": "tsx src/remote/auth-providers/token.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "diff": "^9.0.0",
+    "docx": "^9.7.1",
+    "glob": "^11.0.1",
+    "html-pdf-node": "^1.0.8",
+    "mammoth": "^1.12.0",
+    "node-pty": "^1.1.0",
+    "ora": "^8.2.0",
+    "pdf-parse": "^2.4.5",
+    "playwright": "^1.61.0",
+    "typescript-language-server": "^5.3.0",
+    "web-tree-sitter": "^0.26.9",
+    "ws": "^8.21.0",
+    "xterm": "^5.3.0",
+    "xterm-addon-fit": "^0.8.0",
+    "xterm-addon-web-links": "^0.9.0"
+  },
+  "overrides": {
+    "ws": "^8.21.0",
+    "tar-fs": "^3.0.6",
+    "node-fetch": "^2.7.0",
+    "nth-check": "^2.1.1",
+    "lodash.pick": "^4.4.0"
+  },
+  "devDependencies": {
+    "@types/diff": "^7.0.0",
+    "@types/node": "^22.15.0",
+    "@types/ws": "^8.18.1",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0",
+    "vitest": "^4.1.9"
+  }
+}

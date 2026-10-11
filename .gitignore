@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-oss/
+gui/webshell/dist/
+*.tsbuildinfo
+
+# Secrets and local configuration
+.env
+.env.local
+*.env.local
+.cobra-commander/
+
+# Runtime state
+.worker-state.json
+.worker-store/
+.intake-requests/
+tasks/
+content/
+uploads/
+data/
+logs/
+*.log
+
+# Per-incident backups written by the support agent
+archive/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp

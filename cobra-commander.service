@@ -1,0 +1,41 @@
+# Cobra Commander — systemd unit template.
+#
+# Placeholders are substituted by install-service.sh:
+#   __USER__       the account the daemon runs as
+#   __WORKDIR__    the Cobra Commander install directory
+#   __NODE_BIN__   directory containing the node binary
+#
+# To install by hand, copy this file to /etc/systemd/system/cobra-commander.service
+# and replace the placeholders yourself.
+
+[Unit]
+Description=Cobra Commander — Multi-Model IDE
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__USER__
+WorkingDirectory=__WORKDIR__
+Environment=NODE_ENV=production
+Environment=COBRA_WORK_DIR=__WORKDIR__
+Environment=CC_HOME=__WORKDIR__
+Environment=PATH=__NODE_BIN__:/usr/local/bin:/usr/bin:/bin
+EnvironmentFile=-__WORKDIR__/.env
+ExecStart=__NODE_BIN__/node --import __WORKDIR__/node_modules/tsx/dist/loader.mjs __WORKDIR__/src/daemon.ts
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+KillMode=mixed
+TimeoutStopSec=10
+
+# Hardening — the daemon runs model-authored shell commands and file edits.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=read-only
+ReadWritePaths=__WORKDIR__
+
+[Install]
+WantedBy=multi-user.target

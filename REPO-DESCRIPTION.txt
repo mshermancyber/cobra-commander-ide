@@ -1,0 +1,1 @@
+Self-hosted multi-model AI coding platform. An orchestrator model plans and delegates; cheaper worker models implement. A harness — not the model's self-report — decides success: mutation tracking, verification receipts, compile gates, doom-loop aborts. CLI, REST/WebSocket API, web shell, and a support agent that repairs itself.
