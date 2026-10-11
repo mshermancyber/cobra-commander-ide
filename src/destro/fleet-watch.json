@@ -1,0 +1,4 @@
+{
+  "_readme": "Proactive watch list for the support agent. EMPTY BY DEFAULT and strictly opt-in: other services on the host are independent of Cobra Commander and are not monitored unless the operator adds them here deliberately. The support agent can still troubleshoot any of them reactively when pointed at them from the web UI. Entry shape: {name, kind: docker-compose|docker|systemd|process, path, containers?, unit?, health: {type: http|docker|systemd, url?}, watch: true}.",
+  "services": []
+}
